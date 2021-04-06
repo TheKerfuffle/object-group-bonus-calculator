@@ -40,4 +40,55 @@ const employees = [
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
 
-console.log( employees );
+let newEmployees = [];
+
+function bonusCalculator(){
+  for (i=0; i<employees.length; i++){
+    let worker = {};
+    worker.name = employees[i].name;
+    if (employees[i].reviewRating <= 2) {
+      worker.bonusPercentage = ;
+      if ()
+      worker.totalBonus = 0;
+      worker.totalCompensation = Number(employees[i].annualSalary);
+    } 
+    else if (employees[i].reviewRating === 3) {
+      worker.bonusPercentage = .04;
+
+      worker.totalBonus = Number(employees[i].annualSalary) * worker.bonusPercentage;
+      worker.totalCompensation = Number(employees[i].annualSalary) + worker.totalBonus;
+    }
+    else if (employees[i].reviewRating === 4) {
+      worker.bonusPercentage = .06;
+
+      worker.totalBonus = Number(employees[i].annualSalary) * worker.bonusPercentage;
+      worker.totalCompensation = Number(employees[i].annualSalary) + worker.totalBonus;
+    } 
+    else if (employees[i].reviewRating === 5 ) {
+      worker.bonusPercentage = .1;
+      
+      worker.totalBonus = Number(employees[i].annualSalary) * worker.bonusPercentage;
+      worker.totalCompensation = Number(employees[i].annualSalary) + worker.totalBonus;
+    }
+
+
+
+    
+    newEmployees.push(worker);
+
+    //console.log( employees[i] );
+  }
+}
+bonusCalculator();
+
+console.log(newEmployees);
+
+
+
+
+function newEmployee (person) {
+  let newPerson = {};
+  if (person.reviewRating <= 2) {
+    
+  }
+}
