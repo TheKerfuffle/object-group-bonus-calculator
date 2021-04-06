@@ -47,26 +47,34 @@ function bonusCalculator(){
     let worker = {};
     worker.name = employees[i].name;
     if (employees[i].reviewRating <= 2) {
-      worker.bonusPercentage = ;
-      if ()
+      worker.bonusPercentage = 0;
+      if (employees[i].employeeNumber.length === 4){
+        worker.bonusPercentage += .05;
+      }
       worker.totalBonus = 0;
       worker.totalCompensation = Number(employees[i].annualSalary);
     } 
     else if (employees[i].reviewRating === 3) {
       worker.bonusPercentage = .04;
-
+      if (employees[i].employeeNumber.length === 4){
+        worker.bonusPercentage += .05;
+      }
       worker.totalBonus = Number(employees[i].annualSalary) * worker.bonusPercentage;
       worker.totalCompensation = Number(employees[i].annualSalary) + worker.totalBonus;
     }
     else if (employees[i].reviewRating === 4) {
       worker.bonusPercentage = .06;
-
+      if (employees[i].employeeNumber.length === 4){
+        worker.bonusPercentage += .05;
+      }
       worker.totalBonus = Number(employees[i].annualSalary) * worker.bonusPercentage;
       worker.totalCompensation = Number(employees[i].annualSalary) + worker.totalBonus;
     } 
     else if (employees[i].reviewRating === 5 ) {
       worker.bonusPercentage = .1;
-      
+      if (employees[i].employeeNumber.length === 4){
+        worker.bonusPercentage += .05;
+      }
       worker.totalBonus = Number(employees[i].annualSalary) * worker.bonusPercentage;
       worker.totalCompensation = Number(employees[i].annualSalary) + worker.totalBonus;
     }
