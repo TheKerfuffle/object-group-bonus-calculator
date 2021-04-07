@@ -40,53 +40,87 @@ const employees = [
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
 
+$( document ).ready(readyNow);
+
+function readyNow() {
+  console.log('b');
+  $( '#bonusButton').on( 'click', listEmployees );
+  
+}
+
 let newEmployees = [];
 
 function bonusCalculator(){
   for (i=0; i<employees.length; i++){
     let worker = {};
     worker.name = employees[i].name;
+    
+
+    // Review rating of 2 or less
     if (employees[i].reviewRating <= 2) {
       worker.bonusPercentage = 0;
       if (employees[i].employeeNumber.length === 4){
         worker.bonusPercentage += .05;
       }
-      worker.totalBonus = 0;
-      worker.totalCompensation = Number(employees[i].annualSalary);
+      if (Number(employees[i].annualSalary) > 65000 && worker.bonusPercentage > 0) {
+        worker.bonusPercentage -= .01;
+      }
+      worker.totalBonus = Math.round(Number(employees[i].annualSalary) * worker.bonusPercentage);
+      worker.totalCompensation = Number(employees[i].annualSalary) + worker.totalBonus;
+      
     } 
+
+    // Review rating of 3
     else if (employees[i].reviewRating === 3) {
       worker.bonusPercentage = .04;
-      if (employees[i].employeeNumber.length === 4){
+      if (employees[i].employeeNumber.length === 4) {
         worker.bonusPercentage += .05;
       }
-      worker.totalBonus = Number(employees[i].annualSalary) * worker.bonusPercentage;
+      if (Number(employees[i].annualSalary) > 65000) {
+        worker.bonusPercentage -= .01;
+      }
+      worker.totalBonus = Math.round(Number(employees[i].annualSalary) * worker.bonusPercentage);
       worker.totalCompensation = Number(employees[i].annualSalary) + worker.totalBonus;
     }
+    
+    // Review rating of 4
     else if (employees[i].reviewRating === 4) {
       worker.bonusPercentage = .06;
-      if (employees[i].employeeNumber.length === 4){
+      if (employees[i].employeeNumber.length === 4) {
         worker.bonusPercentage += .05;
       }
-      worker.totalBonus = Number(employees[i].annualSalary) * worker.bonusPercentage;
+      if (Number(employees[i].annualSalary) > 65000) {
+        worker.bonusPercentage -= .01;
+      }
+      worker.totalBonus = Math.round(Number(employees[i].annualSalary) * worker.bonusPercentage);
       worker.totalCompensation = Number(employees[i].annualSalary) + worker.totalBonus;
     } 
+    
+    // Review rating of 5
     else if (employees[i].reviewRating === 5 ) {
       worker.bonusPercentage = .1;
       if (employees[i].employeeNumber.length === 4){
         worker.bonusPercentage += .05;
       }
-      worker.totalBonus = Number(employees[i].annualSalary) * worker.bonusPercentage;
+      if (Number(employees[i].annualSalary) > 65000){
+        worker.bonusPercentage -= .01;
+      }
+      if (worker.bonusPercentage > .13){
+        worker.bonusPercentage = .13;
+      }
+      worker.totalBonus = Math.round(Number(employees[i].annualSalary) * worker.bonusPercentage);
       worker.totalCompensation = Number(employees[i].annualSalary) + worker.totalBonus;
     }
-
-
-
-    
     newEmployees.push(worker);
-
     //console.log( employees[i] );
   }
 }
+
+function newWorker (worker) {
+  
+}
+
+// Run the Function to test the variables.
 bonusCalculator();
 
 console.log(newEmployees);
@@ -94,9 +128,4 @@ console.log(newEmployees);
 
 
 
-function newEmployee (person) {
-  let newPerson = {};
-  if (person.reviewRating <= 2) {
-    
-  }
-}
+
